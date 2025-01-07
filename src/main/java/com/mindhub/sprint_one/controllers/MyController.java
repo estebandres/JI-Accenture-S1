@@ -19,7 +19,7 @@ public class MyController {
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User was greeted."),
-            @ApiResponse(responseCode = "500", description = "Internal server error.")
+            @ApiResponse(responseCode = "500", description = "Sorry, unable to greet you. Internal server error.")
     })
     @GetMapping("/greeting")
     public ResponseEntity<String> getGreeting() {
@@ -48,7 +48,7 @@ public class MyController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User Data successfully received."),
             @ApiResponse(responseCode = "404", description = "User Not Found."),
-            @ApiResponse(responseCode = "400", description = "Bad request, invalid data.")
+            @ApiResponse(responseCode = "400", description = "Bad request, invalid id or bad URI format.")
     })
     @GetMapping("/user/{id}")
     public String getUserById(@Parameter(description = "ID of the user to retrieve", required = true, example = "12345")
@@ -58,7 +58,7 @@ public class MyController {
 
 
     @Operation(
-            summary = "Get a value searching with a query param",
+            summary = "Search for data using a query param",
             description = "Searches for items based on a query parameter and returns search results."
     )
     @ApiResponses(value = {
